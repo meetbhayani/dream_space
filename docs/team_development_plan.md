@@ -274,6 +274,30 @@ Reusable UI library.
 
 ## Developer 2
 
+Create Static Data
+
+Projects
+
+Services
+
+Gallery
+
+Testimonials
+
+Team
+
+FAQ
+
+Blog
+
+Materials
+
+Statistics
+
+Deliverable
+
+Complete static content layer.
+
 ---
 
 # SPRINT 2
