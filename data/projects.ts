@@ -98,5 +98,116 @@ export const PROJECTS_DATA: Project[] = [
     },
     createdAt: '2026-04-15T09:00:00Z',
     updatedAt: '2026-04-15T09:00:00Z'
+  },
+  {
+    id: 'proj-3',
+    title: 'The Coastal Retreat',
+    slug: 'the-coastal-retreat',
+    subtitle: 'Luxury beachfront villa in Alibaug',
+    description: 'A serene 8,200 sq.ft. seaside residence featuring floor‑to‑ceiling glass walls, natural stone terraces, and a private infinity pool overlooking the Arabian Sea.',
+    scope: 
+    [
+      'Site Master Planning',
+      'Marine ‑ grade Concrete Foundations',
+      'Custom Mahogany Decking',
+      'Integrated Smart Home System',
+      'Landscape & Pool Design'
+    ],
+    category: 'villa',
+    client: { name: 'Rohan Mehta', type: 'residential', feedback: 'The Coastal Retreat exceeded every expectation – the seamless indoor‑outdoor flow is breathtaking.' },
+    location: 'Alibaug, Maharashtra',
+    year: 2027,
+    status: 'completed',
+    budget: 'ultra-luxury',
+    estimatedValue: '₹4.8 Crores',
+    coverImage: '/images/projects/coastal-retreat-cover.jpg',
+    gallery: [
+      { id: 'img-3-1', url: '/images/projects/coastal-retreat-living.jpg', type: 'image', alt: 'Living area with ocean view', order: 1, featured: true },
+      { id: 'img-3-2', url: '/images/projects/coastal-retreat-pool.jpg', type: 'image', alt: 'Infinity pool at sunset', order: 2 }
+    ],
+    materials: [
+      { name: 'Travertine Marble', description: 'Polished stone for pool surrounds', category: 'stone' },
+      { name: 'Mahogany Wood', description: 'Premium decking material', category: 'wood' }
+    ],
+    designers: [
+      { name: 'Vikram Sheth', role: 'Principal Designer' },
+      { name: 'Anita Rao', role: 'Sustainability Lead' }
+    ],
+    completionDate: '2027-03-15',
+    seo: { title: 'Coastal Retreat Luxury Villa | Dream Space Studio', description: 'Explore the seaside elegance of The Coastal Retreat, a premium beachfront villa designed with glass walls, stone terraces, and smart home automation.' },
+    createdAt: '2027-02-01T09:30:00Z',
+    updatedAt: '2027-02-01T09:30:00Z'
+  },
+  {
+    id: 'proj-4',
+    title: 'The Heritage Loft',
+    slug: 'the-heritage-loft',
+    subtitle: 'Adaptive reuse of historic market building',
+    description: 'Transformation of a 1920‑s Art Deco market block in Ahmedabad into a high‑end mixed‑use loft with boutique retail, coworking, and luxury residences.',
+    scope: [
+      'Structural Reinforcement',
+      'Heritage Facade Restoration',
+      'Custom Brass Fixtures',
+      'Integrated HVAC & Smart Lighting'
+    ],
+    category: 'commercial',
+    client: { name: 'Heritage Developments Ltd.', type: 'commercial', feedback: 'Preserving the heritage while creating a modern experience was a masterstroke.' },
+    location: 'Old Ahmedabad',
+    year: 2026,
+    status: 'completed',
+    budget: 'bespoke',
+    estimatedValue: '₹6.2 Crores',
+    coverImage: '/images/projects/heritage-loft-cover.jpg',
+    gallery: [
+      { id: 'img-4-1', url: '/images/projects/heritage-loft-interior.jpg', type: 'image', alt: 'Heritage loft interior with brass accents', order: 1, featured: true }
+    ],
+    materials: [
+      { name: 'Brass', description: 'Custom brass lighting fixtures and railings', category: 'metal' },
+      { name: 'Reclaimed Brick', description: 'Exposed brick walls preserving original texture', category: 'stone' }
+    ],
+    designers: [
+      { name: 'Kavya Shah', role: 'Project Architect' },
+      { name: 'Ravi Desai', role: 'Heritage Consultant' }
+    ],
+    completionDate: '2026-11-20',
+    seo: { title: 'Heritage Loft Adaptive Reuse Project | Dream Space Studio', description: 'Discover The Heritage Loft – a luxurious transformation of a historic market building into a modern mixed‑use loft.' },
+    createdAt: '2026-09-10T10:00:00Z',
+    updatedAt: '2026-09-10T10:00:00Z'
+  },
+  {
+    id: 'proj-5',
+    title: 'The Sky‑High Office',
+    slug: 'the-sky-high-office',
+    subtitle: 'Premium corporate tower in Mumbai',
+    description: 'A 25‑storey corporate headquarters featuring glass curtain walls, marble lobby, custom lighting rigs, and high‑tech conference suites.',
+    scope: [
+      'Vertical Façade Design',
+      'Marble Lobby & Reception',
+      'Acoustic Conference Rooms',
+      'Smart Building Management System'
+    ],
+    category: 'commercial',
+    client: { name: 'Maharashtra Financial Corp.', type: 'commercial', feedback: 'The office reflects our brand prestige and offers state‑of‑the‑art employee experience.' },
+    location: 'Bandra Kurla Complex, Mumbai',
+    year: 2028,
+    status: 'in-progress',
+    budget: 'ultra-luxury',
+    estimatedValue: '₹12 Crores',
+    coverImage: '/images/projects/sky-high-office-cover.jpg',
+    gallery: [
+      { id: 'img-5-1', url: '/images/projects/sky-high-office-lobby.jpg', type: 'image', alt: 'Grand marble lobby with chandelier', order: 1, featured: true }
+    ],
+    materials: [
+      { name: 'Italian Carrara Marble', description: 'Luxe marble for lobby flooring', category: 'marble' },
+      { name: 'LED Panel System', description: 'Dynamic lighting for conference rooms', category: 'lighting' }
+    ],
+    designers: [
+      { name: 'Vikram Sheth', role: 'Principal Designer' },
+      { name: 'Sneha Patel', role: 'Technology Integration Lead' }
+    ],
+    completionDate: '2028-08-30',
+    seo: { title: 'Sky‑High Office Interior Design | Dream Space Studio', description: 'Explore the premium interior design of The Sky‑High Office, a landmark corporate tower in Mumbai featuring marble, glass, and smart tech.' },
+    createdAt: '2027-12-01T09:00:00Z',
+    updatedAt: '2027-12-01T09:00:00Z'
   }
 ];

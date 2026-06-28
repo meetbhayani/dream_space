@@ -71,7 +71,7 @@ export const SERVICES_DATA: Service[] = [
     summary: 'Elite commercial layouts for executive offices, flagship stores, and hospitality lounges.',
     icon: 'briefcase',
     heroImage: '/images/services/commercial-hero.jpg',
-    category: 'commercial',
+    category: 'architecture',
     features: [
       { title: 'Brand Identity Synthesis', description: 'Translating corporate philosophy into physical spatial environments.' },
       { title: 'Ergonomic Workspace Layouts', description: 'Acoustically-insulated meeting cabins, hot-desking, and break zones.' },
@@ -93,5 +93,125 @@ export const SERVICES_DATA: Service[] = [
     },
     createdAt: '2026-06-28T09:00:00Z',
     updatedAt: '2026-06-28T09:00:00Z'
-  }
+  },
+
+    {
+      id: 'srv-4',
+      title: 'Custom Furniture Design',
+      slug: 'custom-furniture-design',
+      description: 'Bespoke furniture pieces handcrafted from premium materials, tailored to each client’s space and aesthetic, integrating seamlessly with overall interior concepts.',
+      summary: 'Handcrafted luxury furniture designs for high-end interiors.',
+      icon: 'settings',
+      heroImage: '/images/services/furniture-hero.jpg',
+      category: 'interior-design',
+      features: [
+        { title: 'Tailored Design', description: 'Collaborative design process to create unique pieces.' },
+        { title: 'Premium Materials', description: 'Selection of exotic woods, marble tops, and metal accents.' },
+        { title: 'Artisanal Craftsmanship', description: 'Hand-built by master craftsmen.' }
+      ],
+      process: [
+        { title: 'Concept Consultation', description: 'Understanding client vision and functional needs.', duration: '1 week' },
+        { title: 'Design Development', description: '3D renderings and material selection.', duration: '2 weeks' },
+        { title: 'Fabrication', description: 'Handcrafting the pieces in workshop.', duration: '4 weeks' },
+        { title: 'Installation', description: 'Seamless placement and finishing touches.', duration: '1 week' }
+      ],
+      pricingRange: 'Starting from ₹5,000 per piece',
+      featured: false,
+      order: 4,
+      seo: {
+        title: 'Luxury Custom Furniture Design Services | Dream Space Studio',
+        description: 'Create bespoke, handcrafted furniture pieces for premium residences with exquisite materials and craftsmanship.'
+      },
+      createdAt: '2026-06-28T09:00:00Z',
+      updatedAt: '2026-06-28T09:00:00Z'
+    },
+    {
+      id: 'srv-5',
+      title: 'Lighting Design Consultation',
+      slug: 'lighting-design-consultation',
+      description: 'Expert lighting design that enhances ambience, highlights architecture, and integrates smart controls for energy efficiency.',
+      summary: 'Premium lighting schemes for luxury interiors.',
+      icon: 'sun',
+      heroImage: '/images/services/lighting-hero.jpg',
+      category: 'interior-design',
+      features: [
+        { title: 'Layered Lighting', description: 'Ambient, task, and accent lighting design.' },
+        { title: 'Smart Integration', description: 'Home automation and dimming control.' },
+        { title: 'Energy Efficiency', description: 'LED solutions and daylight harvesting.' }
+      ],
+      process: [
+        { title: 'Site Survey', description: 'Analyzing space and natural light.', duration: '1 week' },
+        { title: 'Concept Design', description: 'Lighting plans and renderings.', duration: '2 weeks' },
+        { title: 'Specification', description: 'Selecting fixtures and controls.', duration: '1 week' },
+        { title: 'Installation & Tuning', description: 'Implementation and calibration.', duration: '2 weeks' }
+      ],
+      pricingRange: 'Starting from ₹1,200 per sqm',
+      featured: false,
+      order: 5,
+      seo: {
+        title: 'Luxury Lighting Design Services | Dream Space Studio',
+        description: 'Curated lighting solutions for upscale interiors, combining aesthetics and smart technology.'
+      },
+      createdAt: '2026-06-28T09:00:00Z',
+      updatedAt: '2026-06-28T09:00:00Z'
+    },
+    {
+      id: 'srv-6',
+      title: 'Sustainability Consulting',
+      slug: 'sustainability-consulting',
+      description: 'Guidance on eco‑friendly material selection, energy‑saving design strategies, and green certifications for luxury projects.',
+      summary: 'Sustainable luxury interior design consulting.',
+      icon: 'leaf',
+      heroImage: '/images/services/sustainability-hero.jpg',
+      category: 'consultation',
+      features: [
+        { title: 'Material Advisory', description: 'Low‑VOC finishes and reclaimed wood.' },
+        { title: 'Energy Modeling', description: 'Simulation for optimal climate control.' },
+        { title: 'Certification Support', description: 'LEED, GRIHA assistance.' }
+      ],
+      process: [
+        { title: 'Assessment', description: 'Review of existing design intents.', duration: '1 week' },
+        { title: 'Strategy Development', description: 'Sustainable design roadmap.', duration: '2 weeks' },
+        { title: 'Implementation Guidance', description: 'Vendor selection and compliance.', duration: '3 weeks' }
+      ],
+      pricingRange: 'Custom based on scope',
+      featured: false,
+      order: 6,
+      seo: {
+        title: 'Luxury Sustainable Interior Design Consulting | Dream Space Studio',
+        description: 'Integrate sustainability into high‑end interior projects with expert guidance.'
+      },
+      createdAt: '2026-06-28T09:00:00Z',
+      updatedAt: '2026-06-28T09:00:00Z'
+    },
+    {
+      id: 'srv-7',
+      title: 'Art Curation Service',
+      slug: 'art-curation-service',
+      description: 'Selection and placement of fine art pieces, sculpture, and bespoke installations that complement the interior narrative.',
+      summary: 'Curated art integration for luxury interiors.',
+      icon: 'image',
+      heroImage: '/images/services/art-hero.jpg',
+      category: 'consultation',
+      features: [
+        { title: 'Artist Collaboration', description: 'Work with emerging and established artists.' },
+        { title: 'Custom Installations', description: 'Tailored lighting and mounting solutions.' },
+        { title: 'Storytelling', description: 'Art that reflects client’s heritage and taste.' }
+      ],
+      process: [
+        { title: 'Concept Discussion', description: 'Understanding the desired narrative.', duration: '1 week' },
+        { title: 'Selection', description: 'Curating pieces and sourcing.', duration: '2 weeks' },
+        { title: 'Installation', description: 'Professional placement and lighting.', duration: '1 week' }
+      ],
+      pricingRange: 'Variable per piece',
+      featured: false,
+      order: 7,
+      seo: {
+        title: 'Luxury Art Curation Services | Dream Space Studio',
+        description: 'Integrate fine art and sculptural pieces into premium interior designs.'
+      },
+      createdAt: '2026-06-28T09:00:00Z',
+      updatedAt: '2026-06-28T09:00:00Z'
+    }
 ];
+

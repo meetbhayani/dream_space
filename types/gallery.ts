@@ -1,4 +1,4 @@
-export type GalleryCategory = 'living-room' | 'kitchen' | 'bedroom' | 'office' | 'villa' | 'details' | 'materials';
+export type GalleryCategory = 'living-room' | 'kitchen' | 'bedroom' | 'office' | 'villa' | 'details' | 'materials' | 'dining';
 
 export interface GalleryItem {
   id: string;

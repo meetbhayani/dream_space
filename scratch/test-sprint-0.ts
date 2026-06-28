@@ -1,15 +1,15 @@
-import { slugify } from './utils/slugify';
-import { formatDate } from './utils/formatDate';
-import { truncate } from './utils/truncate';
-import { validatePhone } from './utils/validatePhone';
-import { calculateBudget } from './utils/calculateBudget';
-import { PROJECTS_DATA } from './data/projects';
-import { SERVICES_DATA } from './data/services';
-import { TESTIMONIALS_DATA } from './data/testimonials';
-import { FAQ_DATA } from './data/faq';
-import { TEAM_DATA } from './data/team';
-import { COLORS } from './constants/colors';
-import { BREAKPOINTS } from './constants/breakpoints';
+import { slugify } from '../utils/slugify';
+import { formatDate } from '../utils/formatDate';
+import { truncate } from '../utils/truncate';
+import { validatePhone } from '../utils/validatePhone';
+import { calculateBudget } from '../utils/calculateBudget';
+import { PROJECTS_DATA } from '../data/projects';
+import { SERVICES_DATA } from '../data/services';
+import { TESTIMONIALS_DATA } from '../data/testimonials';
+import { FAQ_DATA } from '../data/faq';
+import { TEAM_DATA } from '../data/team';
+import { COLORS } from '../constants/colors';
+import { BREAKPOINTS } from '../constants/breakpoints';
 
 function runTests() {
   console.log('=== STARTING SPRINT 0 SANITY TESTS ===\n');
