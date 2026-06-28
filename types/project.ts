@@ -68,9 +68,62 @@ export interface Project {
   updatedAt: string;
 }
 
+export interface ProjectCategory {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+}
+
 export interface ProjectFilterOptions {
   category?: string;
   status?: string;
   budget?: string;
+  search?: string;
+  excludeSlug?: string;
   limit?: number;
+}
+
+export type ProjectSortOption = 'newest' | 'oldest' | 'year-desc' | 'year-asc' | 'title-asc' | 'title-desc';
+
+export interface ProjectQueryOptions extends ProjectFilterOptions {
+  sortBy?: ProjectSortOption;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface ProjectPaginationMeta {
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
+
+export interface ProjectListResult {
+  items: Project[];
+  pagination: ProjectPaginationMeta;
+  metadata: {
+    totalMatches: number;
+    appliedFilters: string[];
+  };
+}
+
+export interface ProjectRepository {
+  getProjects(): Promise<Project[]>;
+  getProjectBySlug(slug: string): Promise<Project | null>;
+  getProjectById(id: string): Promise<Project | null>;
+  getFeaturedProjects(limit?: number): Promise<Project[]>;
+  getCategories(): Promise<ProjectCategory[]>;
+}
+
+export interface IProjectService {
+  getProjects(filters?: ProjectFilterOptions): Promise<Project[]>;
+  listProjects(query?: ProjectQueryOptions): Promise<ProjectListResult>;
+  getProjectBySlug(slug: string): Promise<Project | null>;
+  getProjectById(id: string): Promise<Project | null>;
+  getFeaturedProjects(limit?: number): Promise<Project[]>;
+  getRelatedProjects(currentSlug: string, category: string, limit?: number): Promise<Project[]>;
+  getCategories(): Promise<ProjectCategory[]>;
 }

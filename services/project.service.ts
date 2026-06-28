@@ -1,33 +1,44 @@
-import { Project, ProjectFilterOptions } from '../types/project';
+import { Project, ProjectCategory, ProjectFilterOptions, IProjectService, ProjectListResult, ProjectQueryOptions } from '../types/project';
+import { projectRepository } from './project.repository';
+import { applyProjectFilters, buildProjectListResult } from './project.utils';
 
-/**
- * Interface representing the database-agnostic Project repository.
- * Prepares the codebase for future CMS (Sanity) or Database (Supabase) integration.
- */
-export interface IProjectService {
-  /**
-   * Fetches all projects, optionally filtered by category, status, budget.
-   */
-  getProjects(filters?: ProjectFilterOptions): Promise<Project[]>;
+class ProjectService implements IProjectService {
+  async getProjects(filters?: ProjectFilterOptions): Promise<Project[]> {
+    const projects = await projectRepository.getProjects();
+    return applyProjectFilters(projects, filters);
+  }
 
-  /**
-   * Fetches a single project by its slug identifier.
-   */
-  getProjectBySlug(slug: string): Promise<Project | null>;
+  async listProjects(query?: ProjectQueryOptions): Promise<ProjectListResult> {
+    const projects = await projectRepository.getProjects();
+    return buildProjectListResult(projects, query);
+  }
 
-  /**
-   * Fetches a single project by its unique ID.
-   */
-  getProjectById(id: string): Promise<Project | null>;
+  async getProjectBySlug(slug: string): Promise<Project | null> {
+    return projectRepository.getProjectBySlug(slug);
+  }
 
-  /**
-   * Fetches featured projects for homepage carousel showcases.
-   */
-  getFeaturedProjects(limit?: number): Promise<Project[]>;
+  async getProjectById(id: string): Promise<Project | null> {
+    return projectRepository.getProjectById(id);
+  }
 
-  /**
-   * Fetches related projects excluding the current project.
-   */
-  getRelatedProjects(currentSlug: string, category: string, limit?: number): Promise<Project[]>;
+  async getFeaturedProjects(limit = 4): Promise<Project[]> {
+    return projectRepository.getFeaturedProjects(limit);
+  }
+
+  async getRelatedProjects(currentSlug: string, category: string, limit = 3): Promise<Project[]> {
+    const projects = await this.getProjects({
+      category,
+      excludeSlug: currentSlug,
+      limit
+    });
+
+    return projects.sort((left, right) => right.year - left.year);
+  }
+
+  async getCategories(): Promise<ProjectCategory[]> {
+    return projectRepository.getCategories();
+  }
 }
-export default IProjectService;
+
+export const projectService = new ProjectService();
+export default projectService;
