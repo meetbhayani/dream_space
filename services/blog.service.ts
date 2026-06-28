@@ -1,33 +1,51 @@
-import { BlogPost, BlogFilterOptions, BlogCategory, BlogAuthor } from '../types/blog';
-import { PaginatedResult } from '../types/api';
+import { BlogAuthor, BlogCategory, BlogFilterOptions, BlogListResult, BlogPost, BlogQueryOptions, IBlogService } from '../types/blog';
+import { blogRepository } from './blog.repository';
+import { applyBlogFilters, buildArticleSchema, buildBlogListResult, buildSeoMetadata, calculateReadingTime } from './blog.utils';
 
-/**
- * Interface representing the database-agnostic Blog repository.
- */
-export interface IBlogService {
-  /**
-   * Fetches blog articles with support for pagination, searching, and category filtering.
-   */
-  getPosts(filters?: BlogFilterOptions): Promise<PaginatedResult<BlogPost>>;
+class BlogService implements IBlogService {
+  async getPosts(filters?: BlogFilterOptions): Promise<BlogListResult> {
+    const posts = await blogRepository.getPosts();
+    return buildBlogListResult(posts, filters as BlogQueryOptions | undefined);
+  }
 
-  /**
-   * Fetches a single article based on its URL-safe slug.
-   */
-  getPostBySlug(slug: string): Promise<BlogPost | null>;
+  async getPostBySlug(slug: string): Promise<BlogPost | null> {
+    return blogRepository.getPostBySlug(slug);
+  }
 
-  /**
-   * Fetches featured articles for highlights panels.
-   */
-  getFeaturedPosts(limit?: number): Promise<BlogPost[]>;
+  async getFeaturedPosts(limit = 3): Promise<BlogPost[]> {
+    return blogRepository.getFeaturedPosts(limit);
+  }
 
-  /**
-   * Fetches all available blog categories.
-   */
-  getCategories(): Promise<BlogCategory[]>;
+  async getCategories(): Promise<BlogCategory[]> {
+    return blogRepository.getCategories();
+  }
 
-  /**
-   * Fetches active authors registered in the system.
-   */
-  getAuthors(): Promise<BlogAuthor[]>;
+  async getAuthors(): Promise<BlogAuthor[]> {
+    return blogRepository.getAuthors();
+  }
+
+  async getRelatedPosts(currentSlug: string, categorySlug?: string, limit = 3): Promise<BlogPost[]> {
+    const posts = await blogRepository.getPosts();
+    return applyBlogFilters(posts, { categorySlug, limit, offset: 0 })
+      .filter((post) => post.slug !== currentSlug)
+      .slice(0, limit);
+  }
+
+  async getReadingTime(slug: string): Promise<string> {
+    const post = await blogRepository.getPostBySlug(slug);
+    return post ? calculateReadingTime(post.content) : '0 min read';
+  }
+
+  async getSeoMetadata(slug: string) {
+    const post = await blogRepository.getPostBySlug(slug);
+    return post ? buildSeoMetadata(post) : null;
+  }
+
+  async getArticleSchema(slug: string) {
+    const post = await blogRepository.getPostBySlug(slug);
+    return post ? buildArticleSchema(post) : null;
+  }
 }
-export default IBlogService;
+
+export const blogService = new BlogService();
+export default blogService;

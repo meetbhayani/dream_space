@@ -45,6 +45,55 @@ export interface BlogFilterOptions {
   categorySlug?: string;
   tag?: string;
   searchQuery?: string;
+  authorId?: string;
+  featured?: boolean;
+  status?: BlogStatus;
   limit?: number;
   offset?: number;
+}
+
+export type BlogSortOption = 'newest' | 'oldest' | 'featured' | 'title-asc' | 'title-desc';
+
+export interface BlogQueryOptions extends BlogFilterOptions {
+  sortBy?: BlogSortOption;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface BlogPaginationMeta {
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
+
+export interface BlogListResult {
+  items: BlogPost[];
+  pagination: BlogPaginationMeta;
+  metadata: {
+    totalMatches: number;
+    appliedFilters: string[];
+  };
+}
+
+export interface BlogRepository {
+  getPosts(): Promise<BlogPost[]>;
+  getPostBySlug(slug: string): Promise<BlogPost | null>;
+  getFeaturedPosts(limit?: number): Promise<BlogPost[]>;
+  getCategories(): Promise<BlogCategory[]>;
+  getAuthors(): Promise<BlogAuthor[]>;
+}
+
+export interface IBlogService {
+  getPosts(filters?: BlogFilterOptions): Promise<BlogListResult>;
+  getPostBySlug(slug: string): Promise<BlogPost | null>;
+  getFeaturedPosts(limit?: number): Promise<BlogPost[]>;
+  getCategories(): Promise<BlogCategory[]>;
+  getAuthors(): Promise<BlogAuthor[]>;
+  getRelatedPosts(currentSlug: string, categorySlug?: string, limit?: number): Promise<BlogPost[]>;
+  getReadingTime(slug: string): Promise<string>;
+  getSeoMetadata(slug: string): Promise<unknown>;
+  getArticleSchema(slug: string): Promise<unknown>;
 }
