@@ -1,5 +1,6 @@
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
+import { SectionHeading } from '@/components/sections/SectionHeading';
 
 export function ProjectsSection() {
   return (
@@ -7,9 +8,11 @@ export function ProjectsSection() {
       <RevealOnScroll>
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="max-w-xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-gold">Projects</p>
-            <h2 className="text-4xl font-light leading-tight text-white sm:text-5xl">Signature interiors that feel quietly luxurious.</h2>
-            <p className="mt-6 text-base text-muted">Each project is composed with restrained materials, sculptural lighting, and clean proportions to create spaces that balance warmth and refinement.</p>
+            <SectionHeading
+              eyebrow="Projects"
+              title="Signature interiors that feel quietly luxurious."
+              description="Each project is composed with restrained materials, sculptural lighting, and clean proportions to create spaces that balance warmth and refinement."
+            />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-2">
             <ProjectCard

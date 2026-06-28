@@ -1,5 +1,6 @@
 import { TestimonialCard } from '@/components/cards/TestimonialCard';
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
+import { SectionHeading } from '@/components/sections/SectionHeading';
 
 export function TestimonialsSection() {
   return (
@@ -7,9 +8,11 @@ export function TestimonialsSection() {
       <RevealOnScroll>
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="max-w-xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-gold">Testimonials</p>
-            <h2 className="text-4xl font-light leading-tight text-white sm:text-5xl">A quiet confidence in every collaboration.</h2>
-            <p className="mt-6 text-base text-muted">Clients value our ability to simplify complexity, remain attentive to every detail, and deliver spaces that feel effortless and elevated.</p>
+            <SectionHeading
+              eyebrow="Testimonials"
+              title="A quiet confidence in every collaboration."
+              description="Clients value our ability to simplify complexity, remain attentive to every detail, and deliver spaces that feel effortless and elevated."
+            />
           </div>
           <div className="grid gap-6">
             <TestimonialCard
