@@ -35,37 +35,39 @@ const projects = [
 export function ProjectsSection() {
   return (
     <Section id="projects" className="mt-32">
-      <Grid cols={1} className="gap-14 lg:grid-cols-[1.1fr_1fr]">
-        <RevealOnScroll>
-          <div className="max-w-xl">
-            <SectionHeading
-              eyebrow="Projects"
-              title="Signature interiors that feel quietly luxurious."
-              description="Each project is composed with restrained materials, sculptural lighting, and clean proportions to create spaces that balance warmth and refinement."
-            />
-          </div>
-        </RevealOnScroll>
+      <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#090909]/90 p-8 before:absolute before:-left-20 before:top-1/2 before:h-[300px] before:w-[300px] before:-translate-y-1/2 before:rounded-full before:bg-gold/10 before:blur-3xl">
+        <Grid cols={1} className="relative gap-14 lg:grid-cols-[1.1fr_1fr]">
+          <RevealOnScroll>
+            <div className="max-w-xl">
+              <SectionHeading
+                eyebrow="Projects"
+                title="Signature interiors that feel quietly luxurious."
+                description="Each project is composed with restrained materials, sculptural lighting, and clean proportions to create spaces that balance warmth and refinement."
+              />
+            </div>
+          </RevealOnScroll>
 
-        <div className="space-y-8">
-          <div className="lg:hidden">
-            <Carousel
-              slides={projects.map((project) => (
-                <div key={project.title} className="h-full">
+          <div className="space-y-8">
+            <div className="lg:hidden">
+              <Carousel
+                slides={projects.map((project) => (
+                  <div key={project.title} className="h-full">
+                    <ProjectCard {...project} />
+                  </div>
+                ))}
+              />
+            </div>
+
+            <div className="hidden lg:grid gap-6">
+              {projects.map((project) => (
+                <RevealOnScroll key={project.title} className="h-full">
                   <ProjectCard {...project} />
-                </div>
+                </RevealOnScroll>
               ))}
-            />
+            </div>
           </div>
-
-          <div className="hidden lg:grid gap-6">
-            {projects.map((project) => (
-              <RevealOnScroll key={project.title} className="h-full">
-                <ProjectCard {...project} />
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </Grid>
+        </Grid>
+      </div>
     </Section>
   );
 }
