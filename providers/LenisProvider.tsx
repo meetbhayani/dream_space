@@ -16,9 +16,10 @@ export function LenisProvider({ children }: LenisProviderProps) {
     const lenis = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-      direction: 'vertical',
-      gestureDirection: 'vertical',
+      smoothWheel: true,
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      autoRaf: false,
     });
 
     lenisRef.current = lenis;
