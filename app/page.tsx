@@ -7,7 +7,6 @@ import { PageContainer } from '@/components/layout/PageContainer';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { ServicesSection } from '@/components/sections/ServicesSection';
 
 export default function HomePage() {
   return (
@@ -18,7 +17,6 @@ export default function HomePage() {
         <ProjectsSection />
         <ProcessSection />
         <TestimonialsSection />
-        <ServicesSection />
         <ContactSection />
       </PageContainer>
       <FloatingCTA />
