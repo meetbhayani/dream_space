@@ -110,12 +110,48 @@ export interface ProjectListResult {
   };
 }
 
+export interface ProjectBreadcrumbItem {
+  label: string;
+  href: string;
+}
+
+export interface ProjectStatistic {
+  label: string;
+  value: string;
+}
+
+export interface ProjectTimelineItem {
+  title: string;
+  description: string;
+  date?: string;
+}
+
+export interface ProjectDetailData {
+  project: Project;
+  materials: ProjectMaterial[];
+  gallery: ProjectMedia[];
+  relatedProjects: Project[];
+  seo: SEOMetadata;
+  breadcrumbs: ProjectBreadcrumbItem[];
+  structuredData: Record<string, unknown>;
+  statistics: ProjectStatistic[];
+  timeline: ProjectTimelineItem[];
+}
+
 export interface ProjectRepository {
   getProjects(): Promise<Project[]>;
   getProjectBySlug(slug: string): Promise<Project | null>;
   getProjectById(id: string): Promise<Project | null>;
   getFeaturedProjects(limit?: number): Promise<Project[]>;
   getCategories(): Promise<ProjectCategory[]>;
+  getProjectMaterials(slug: string): Promise<ProjectMaterial[]>;
+  getProjectGallery(slug: string): Promise<ProjectMedia[]>;
+  getProjectSeoMetadata(slug: string): Promise<SEOMetadata | null>;
+  getProjectBreadcrumbs(slug: string): Promise<ProjectBreadcrumbItem[]>;
+  getProjectStructuredData(slug: string): Promise<Record<string, unknown> | null>;
+  getProjectStatistics(slug: string): Promise<ProjectStatistic[]>;
+  getProjectTimeline(slug: string): Promise<ProjectTimelineItem[]>;
+  getProjectDetail(slug: string): Promise<ProjectDetailData | null>;
 }
 
 export interface IProjectService {
@@ -126,4 +162,12 @@ export interface IProjectService {
   getFeaturedProjects(limit?: number): Promise<Project[]>;
   getRelatedProjects(currentSlug: string, category: string, limit?: number): Promise<Project[]>;
   getCategories(): Promise<ProjectCategory[]>;
+  getProjectMaterials(slug: string): Promise<ProjectMaterial[]>;
+  getProjectGallery(slug: string): Promise<ProjectMedia[]>;
+  getProjectSeoMetadata(slug: string): Promise<SEOMetadata | null>;
+  getProjectBreadcrumbs(slug: string): Promise<ProjectBreadcrumbItem[]>;
+  getProjectStructuredData(slug: string): Promise<Record<string, unknown> | null>;
+  getProjectStatistics(slug: string): Promise<ProjectStatistic[]>;
+  getProjectTimeline(slug: string): Promise<ProjectTimelineItem[]>;
+  getProjectDetail(slug: string): Promise<ProjectDetailData | null>;
 }

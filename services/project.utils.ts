@@ -1,4 +1,6 @@
-import { Project, ProjectFilterOptions, ProjectListResult, ProjectPaginationMeta, ProjectQueryOptions, ProjectSortOption } from '../types/project';
+import { SITE_CONFIG } from '../constants/site';
+import { Project, ProjectBreadcrumbItem, ProjectDetailData, ProjectFilterOptions, ProjectListResult, ProjectPaginationMeta, ProjectQueryOptions, ProjectSortOption, ProjectTimelineItem, ProjectStatistic, ProjectMaterial, ProjectMedia } from '../types/project';
+import { SEOMetadata } from '../types/global';
 
 const normalizeText = (value: string): string => value.trim().toLowerCase();
 
@@ -107,3 +109,64 @@ export const buildProjectListResult = (projects: Project[], query?: ProjectQuery
     }
   };
 };
+
+export const buildProjectSeoMetadata = (project: Project): SEOMetadata => ({
+  title: project.seo?.title ?? `${project.title} | Dream Space Studio`,
+  description: project.seo?.description ?? project.description,
+  keywords: [project.category, project.location, project.client.type],
+  canonicalUrl: `${SITE_CONFIG.url}/projects/${project.slug}`,
+  ogType: 'article'
+});
+
+export const buildProjectBreadcrumbs = (project: Project): ProjectBreadcrumbItem[] => [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: project.title, href: `/projects/${project.slug}` }
+];
+
+export const buildProjectStructuredData = (project: Project) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Project',
+  name: project.title,
+  description: project.description,
+  location: project.location,
+  url: `/projects/${project.slug}`,
+  image: project.coverImage,
+  keywords: [project.category, project.location, project.client.type].join(', ')
+});
+
+export const buildProjectStatistics = (project: Project): ProjectStatistic[] => [
+  { label: 'Location', value: project.location },
+  { label: 'Year', value: String(project.year) },
+  { label: 'Status', value: project.status },
+  { label: 'Budget', value: project.budget },
+  { label: 'Scope', value: `${project.scope.length} services` }
+];
+
+export const buildProjectTimeline = (project: Project): ProjectTimelineItem[] => [
+  { title: 'Concept', description: `Initial visioning for ${project.title}.`, date: `${project.year - 1}` },
+  { title: 'Design Development', description: `Interior planning and material curation for ${project.title}.`, date: `${project.year}` },
+  { title: 'Execution', description: `Delivery and installation of finishes, lighting, and custom fittings.`, date: project.completionDate ?? `${project.year}` }
+];
+
+export const buildProjectDetail = (
+  project: Project,
+  relatedProjects: Project[],
+  materials: ProjectMaterial[],
+  gallery: ProjectMedia[],
+  seo: SEOMetadata,
+  breadcrumbs: ProjectBreadcrumbItem[],
+  structuredData: Record<string, unknown>,
+  statistics: ProjectStatistic[],
+  timeline: ProjectTimelineItem[]
+): ProjectDetailData => ({
+  project,
+  materials,
+  gallery,
+  relatedProjects,
+  seo,
+  breadcrumbs,
+  structuredData,
+  statistics,
+  timeline
+});
