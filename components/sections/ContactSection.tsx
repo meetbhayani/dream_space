@@ -1,11 +1,13 @@
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
-import { SectionContainer } from '@/components/layout/SectionContainer';
+import { GlassCard } from '@/components/ui/GlassCard';
+import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/sections/SectionHeading';
+import { Grid } from '@/components/ui/Grid';
 
 export function ContactSection() {
   return (
-    <SectionContainer id="contact" className="rounded-[32px] border border-white/10 bg-surface p-10 sm:p-14">
-      <div className="grid gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
+    <Section id="contact" background="bg-surface" className="rounded-[32px] border border-white/10 px-6 py-12 sm:px-10 sm:py-16 mt-32">
+      <Grid cols={1} className="gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
         <RevealOnScroll>
           <SectionHeading
             eyebrow="Consultation"
@@ -13,14 +15,16 @@ export function ContactSection() {
             description="We work with clients who seek thoughtful, high-end environments. Share your vision and we’ll craft a tailored design experience."
           />
         </RevealOnScroll>
-        <RevealOnScroll className="rounded-[28px] border border-white/10 bg-black/70 p-8">
-          <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-gold">Contact</p>
-            <p className="text-lg text-white">hello@dreamspacestudio.com</p>
-            <p className="text-sm text-muted">Or send a brief about your project and we’ll follow up within 24 hours.</p>
-          </div>
+        <RevealOnScroll>
+          <GlassCard className="bg-black/70">
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-[0.35em] text-gold">Contact</p>
+              <p className="text-lg text-white">hello@dreamspacestudio.com</p>
+              <p className="text-sm text-muted">Or send a brief about your project and we’ll follow up within 24 hours.</p>
+            </div>
+          </GlassCard>
         </RevealOnScroll>
-      </div>
-    </SectionContainer>
+      </Grid>
+    </Section>
   );
 }

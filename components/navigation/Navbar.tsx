@@ -12,6 +12,11 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ];
 
+const linkMotion = {
+  whileHover: { y: -1, opacity: 1 },
+  transition: { duration: 0.2 },
+};
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
@@ -22,15 +27,17 @@ export function Navbar() {
           Dream Space
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           {links.map((item) => (
-            <a
+            <motion.a
               key={item.href}
               href={item.href}
+              whileHover={linkMotion.whileHover}
+              transition={linkMotion.transition}
               className="text-sm uppercase tracking-[0.25em] text-muted transition hover:text-white"
             >
               {item.label}
-            </a>
+            </motion.a>
           ))}
         </nav>
 
@@ -69,7 +76,7 @@ export function Navbar() {
                   {item.label}
                 </a>
               ))}
-              <LuxuryButton href="#contact" variant="secondary" className="w-fit px-5 py-3 text-sm">
+              <LuxuryButton href="#contact" variant="secondary" className="w-full px-5 py-3 text-sm text-center">
                 Consult
               </LuxuryButton>
             </div>
