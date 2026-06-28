@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { LenisProvider } from '@/providers/LenisProvider';
+import { ScrollProgress } from '@/components/navigation/ScrollProgress';
 
 export const metadata: Metadata = {
   title: 'Dream Space Studio',
@@ -11,7 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          <ScrollProgress />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

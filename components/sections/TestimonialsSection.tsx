@@ -1,10 +1,11 @@
 import { TestimonialCard } from '@/components/cards/TestimonialCard';
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
+import { SectionContainer } from '@/components/layout/SectionContainer';
 import { SectionHeading } from '@/components/sections/SectionHeading';
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="mt-32">
+    <SectionContainer id="testimonials">
       <RevealOnScroll>
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="max-w-xl">
@@ -28,6 +29,6 @@ export function TestimonialsSection() {
           </div>
         </div>
       </RevealOnScroll>
-    </section>
+    </SectionContainer>
   );
 }

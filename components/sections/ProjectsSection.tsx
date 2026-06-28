@@ -1,10 +1,11 @@
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
+import { SectionContainer } from '@/components/layout/SectionContainer';
 import { SectionHeading } from '@/components/sections/SectionHeading';
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="mt-32">
+    <SectionContainer id="projects">
       <RevealOnScroll>
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="max-w-xl">
@@ -42,6 +43,6 @@ export function ProjectsSection() {
           </div>
         </div>
       </RevealOnScroll>
-    </section>
+    </SectionContainer>
   );
 }

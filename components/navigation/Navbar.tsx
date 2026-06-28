@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { LuxuryButton } from '@/components/ui/LuxuryButton';
 
 const links = [
   { label: 'Projects', href: '#projects' },
@@ -34,12 +35,9 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <a
-            href="#contact"
-            className="rounded-full border border-gold/30 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.25em] text-white transition hover:bg-gold hover:text-black"
-          >
+          <LuxuryButton href="#contact" variant="secondary" className="px-5 py-3 text-sm">
             Consult
-          </a>
+          </LuxuryButton>
         </div>
 
         <button
@@ -71,13 +69,9 @@ export function Navbar() {
                   {item.label}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="inline-flex w-fit items-center justify-center rounded-full border border-gold/30 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.25em] text-white transition hover:bg-gold hover:text-black"
-              >
+              <LuxuryButton href="#contact" variant="secondary" className="w-fit px-5 py-3 text-sm">
                 Consult
-              </a>
+              </LuxuryButton>
             </div>
           </motion.div>
         ) : null}

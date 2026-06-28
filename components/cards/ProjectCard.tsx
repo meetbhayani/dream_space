@@ -1,3 +1,5 @@
+import { CardFrame } from '@/components/ui/CardFrame';
+
 interface ProjectCardProps {
   title: string;
   location: string;
@@ -7,8 +9,8 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, location, description, highlight }: ProjectCardProps) {
   return (
-    <article className="group flex flex-col rounded-[28px] border border-white/10 bg-[#111111] p-8 transition hover:-translate-y-1 hover:border-gold/30">
-      <div className="mb-6 flex items-center justify-between">
+    <CardFrame className="group transition hover:-translate-y-1 hover:border-gold/30">
+      <div className="mb-6 flex items-center justify-between gap-4">
         <span className="text-sm uppercase tracking-[0.3em] text-gold">{location}</span>
         <span className="text-xs uppercase tracking-[0.35em] text-muted">{highlight}</span>
       </div>
@@ -17,6 +19,6 @@ export function ProjectCard({ title, location, description, highlight }: Project
       <div className="mt-8 inline-flex items-center gap-3 text-sm uppercase tracking-[0.25em] text-gold">
         View project
       </div>
-    </article>
+    </CardFrame>
   );
 }

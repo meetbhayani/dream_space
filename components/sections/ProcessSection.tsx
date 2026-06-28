@@ -1,5 +1,7 @@
 import { FadeInSection } from '@/components/animations/FadeInSection';
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
+import { SectionContainer } from '@/components/layout/SectionContainer';
+import { SectionHeading } from '@/components/sections/SectionHeading';
 
 const steps = [
   {
@@ -22,13 +24,15 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="mt-32">
+    <SectionContainer id="process" className="mt-32">
       <FadeInSection>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="max-w-xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-gold">Process</p>
-            <h2 className="text-4xl font-light leading-tight text-white sm:text-5xl">A refined process designed to create calm, intentional interiors.</h2>
-            <p className="mt-6 text-base text-muted">Our method is thoughtful, collaborative, and precise. Every phase is tuned to deliver premium outcomes without excess noise.</p>
+            <SectionHeading
+              eyebrow="Process"
+              title="A refined process designed to create calm, intentional interiors."
+              description="Our method is thoughtful, collaborative, and precise. Every phase is tuned to deliver premium outcomes without excess noise."
+            />
           </div>
           <div className="grid gap-6">
             {steps.map((step, index) => (
@@ -41,6 +45,6 @@ export function ProcessSection() {
           </div>
         </div>
       </FadeInSection>
-    </section>
+    </SectionContainer>
   );
 }
