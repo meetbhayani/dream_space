@@ -1,5 +1,6 @@
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/footer/Footer';
+import { FloatingCTA } from '@/components/navigation/FloatingCTA';
 import { HeroSection } from '@/components/hero/HeroSection';
 import { Navbar } from '@/components/navigation/Navbar';
 import { PageContainer } from '@/components/layout/PageContainer';
@@ -18,6 +19,7 @@ export default function HomePage() {
         <TestimonialsSection />
         <ContactSection />
       </PageContainer>
+      <FloatingCTA />
       <Footer />
     </main>
   );

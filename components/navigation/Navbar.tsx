@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { LuxuryButton } from '@/components/ui/LuxuryButton';
 
 const links = [
   { label: 'Projects', href: '#projects' },
@@ -10,6 +11,11 @@ const links = [
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
+
+const linkMotion = {
+  whileHover: { y: -1, opacity: 1 },
+  transition: { duration: 0.2 },
+};
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -21,25 +27,24 @@ export function Navbar() {
           Dream Space
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           {links.map((item) => (
-            <a
+            <motion.a
               key={item.href}
               href={item.href}
+              whileHover={linkMotion.whileHover}
+              transition={linkMotion.transition}
               className="text-sm uppercase tracking-[0.25em] text-muted transition hover:text-white"
             >
               {item.label}
-            </a>
+            </motion.a>
           ))}
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <a
-            href="#contact"
-            className="rounded-full border border-gold/30 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.25em] text-white transition hover:bg-gold hover:text-black"
-          >
+          <LuxuryButton href="#contact" variant="secondary" className="px-5 py-3 text-sm">
             Consult
-          </a>
+          </LuxuryButton>
         </div>
 
         <button
@@ -71,13 +76,9 @@ export function Navbar() {
                   {item.label}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="inline-flex w-fit items-center justify-center rounded-full border border-gold/30 bg-white/5 px-5 py-3 text-sm uppercase tracking-[0.25em] text-white transition hover:bg-gold hover:text-black"
-              >
+              <LuxuryButton href="#contact" variant="secondary" className="w-full px-5 py-3 text-sm text-center">
                 Consult
-              </a>
+              </LuxuryButton>
             </div>
           </motion.div>
         ) : null}
