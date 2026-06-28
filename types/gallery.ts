@@ -21,6 +21,55 @@ export interface GalleryItem {
 
 export interface GalleryFilterOptions {
   category?: GalleryCategory;
+  search?: string;
+  projectId?: string;
   limit?: number;
   offset?: number;
+}
+
+export interface GalleryCategoryDefinition {
+  id: string;
+  slug: GalleryCategory;
+  name: string;
+  description: string;
+}
+
+export interface GalleryQueryOptions extends GalleryFilterOptions {
+  page?: number;
+  pageSize?: number;
+}
+
+export interface GalleryPaginationMeta {
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
+
+export interface GalleryListResult {
+  items: GalleryItem[];
+  pagination: GalleryPaginationMeta;
+  metadata: {
+    totalMatches: number;
+    appliedFilters: string[];
+  };
+}
+
+export interface GalleryRepository {
+  getGalleryItems(): Promise<GalleryItem[]>;
+  getFeaturedItems(limit?: number): Promise<GalleryItem[]>;
+  getProjectGalleryItems(projectId: string): Promise<GalleryItem[]>;
+  getCategories(): Promise<GalleryCategoryDefinition[]>;
+}
+
+export interface IGalleryService {
+  getGalleryItems(filters?: GalleryFilterOptions): Promise<GalleryItem[]>;
+  listGalleryItems(query?: GalleryQueryOptions): Promise<GalleryListResult>;
+  getFeaturedItems(limit?: number): Promise<GalleryItem[]>;
+  getProjectGalleryItems(projectId: string): Promise<GalleryItem[]>;
+  getCategories(): Promise<GalleryCategoryDefinition[]>;
+  getImageMetadata(itemId: string): Promise<Record<string, string | number | boolean | undefined> | null>;
+  getSeoAltText(itemId: string): Promise<string | null>;
 }

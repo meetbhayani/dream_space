@@ -1,22 +1,44 @@
-import { GalleryItem, GalleryFilterOptions } from '../types/gallery';
+import { GalleryItem, GalleryCategoryDefinition, GalleryFilterOptions, GalleryListResult, GalleryQueryOptions, IGalleryService } from '../types/gallery';
+import { galleryRepository } from './gallery.repository';
+import { applyGalleryFilters, buildGalleryListResult, buildImageMetadata, buildSeoAltText } from './gallery.utils';
 
-/**
- * Interface representing the database-agnostic Gallery repository.
- */
-export interface IGalleryService {
-  /**
-   * Fetches masonry gallery items based on filters (e.g. category tags).
-   */
-  getGalleryItems(filters?: GalleryFilterOptions): Promise<GalleryItem[]>;
+class GalleryService implements IGalleryService {
+  async getGalleryItems(filters?: GalleryFilterOptions): Promise<GalleryItem[]> {
+    const items = await galleryRepository.getGalleryItems();
+    return applyGalleryFilters(items, filters);
+  }
 
-  /**
-   * Fetches featured items specifically for hero or section background sliders.
-   */
-  getFeaturedItems(limit?: number): Promise<GalleryItem[]>;
+  async listGalleryItems(query?: GalleryQueryOptions): Promise<GalleryListResult> {
+    const items = await galleryRepository.getGalleryItems();
+    return buildGalleryListResult(items, query);
+  }
 
-  /**
-   * Fetches items belonging to a specific architectural project.
-   */
-  getProjectGalleryItems(projectId: string): Promise<GalleryItem[]>;
+  async getFeaturedItems(limit = 6): Promise<GalleryItem[]> {
+    return galleryRepository.getFeaturedItems(limit);
+  }
+
+  async getProjectGalleryItems(projectId: string): Promise<GalleryItem[]> {
+    return galleryRepository.getProjectGalleryItems(projectId);
+  }
+
+  async getCategories(): Promise<GalleryCategoryDefinition[]> {
+    return galleryRepository.getCategories();
+  }
+
+  async getImageMetadata(itemId: string): Promise<Record<string, string | number | boolean | undefined> | null> {
+    const items = await this.getGalleryItems();
+    const item = items.find((galleryItem) => galleryItem.id === itemId);
+
+    return item ? buildImageMetadata(item) : null;
+  }
+
+  async getSeoAltText(itemId: string): Promise<string | null> {
+    const items = await this.getGalleryItems();
+    const item = items.find((galleryItem) => galleryItem.id === itemId);
+
+    return item ? buildSeoAltText(item) : null;
+  }
 }
-export default IGalleryService;
+
+export const galleryService = new GalleryService();
+export default galleryService;
