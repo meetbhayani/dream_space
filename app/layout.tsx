@@ -2,18 +2,37 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { LenisProvider } from '@/providers/LenisProvider';
 import { ScrollProgress } from '@/components/navigation/ScrollProgress';
+import { Cursor } from '@/components/navigation/Cursor';
+import { DEFAULT_METADATA } from '@/constants/metadata';
+import { OrganizationStructuredData, LocalBusinessStructuredData } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Dream Space Studio',
-  description: 'Luxury interior design and architecture studio',
+  title: DEFAULT_METADATA.title,
+  description: DEFAULT_METADATA.description,
+  keywords: [...DEFAULT_METADATA.keywords],
+  authors: [...DEFAULT_METADATA.authors],
+  creator: DEFAULT_METADATA.creator,
+  publisher: DEFAULT_METADATA.publisher,
+  openGraph: { ...DEFAULT_METADATA.openGraph, images: [...DEFAULT_METADATA.openGraph.images] },
+  twitter: {
+    card: DEFAULT_METADATA.twitter.card,
+    title: DEFAULT_METADATA.twitter.title,
+    description: DEFAULT_METADATA.twitter.description,
+    images: [...DEFAULT_METADATA.twitter.images],
+  },
+  robots: { ...DEFAULT_METADATA.robots },
+  alternates: { ...DEFAULT_METADATA.alternates },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <OrganizationStructuredData />
+        <LocalBusinessStructuredData />
         <LenisProvider>
           <ScrollProgress />
+          <Cursor />
           {children}
         </LenisProvider>
       </body>

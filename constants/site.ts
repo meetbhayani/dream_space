@@ -32,7 +32,7 @@ export const COMPANY_INFO = {
 } as const;
 
 export const SITE_CONFIG = {
-  url: '',
+  url: 'https://dreamspacestudio.in',
   defaultLocale: 'en',
   company: COMPANY_INFO,
 } as const;

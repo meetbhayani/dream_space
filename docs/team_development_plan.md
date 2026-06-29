@@ -274,6 +274,30 @@ Reusable UI library.
 
 ## Developer 2
 
+Create Static Data
+
+Projects
+
+Services
+
+Gallery
+
+Testimonials
+
+Team
+
+FAQ
+
+Blog
+
+Materials
+
+Statistics
+
+Deliverable
+
+Complete static content layer.
+
 ---
 
 # SPRINT 2
@@ -383,21 +407,7 @@ Reusable services module.
 
 ---
 
-# SPRINT 5
 
-## Developer 1
-
-Projects UI
-
-* Horizontal Scroll
-* Project Cards
-* Gallery Layout
-* Hover Effects
-* GSAP
-
-Deliverable
-
-Projects showcase.
 
 ---
 
