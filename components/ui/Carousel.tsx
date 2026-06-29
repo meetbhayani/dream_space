@@ -57,13 +57,13 @@ export function Carousel({ slides, className = '' }: CarouselProps) {
         aria-roledescription="carousel"
       >
         {slides.map((slide, index) => (
-          <div key={index} className="min-w-[80vw] sm:min-w-[60vw] snap-center">
+          <div key={index} className="min-w-[84vw] snap-center sm:min-w-[60vw] lg:min-w-[50vw]">
             {slide}
           </div>
         ))}
       </div>
 
-      <div className="absolute left-0 top-1/2 z-10 flex -translate-y-1/2 items-center gap-3">
+      <div className="pointer-events-none absolute inset-x-0 top-1/2 z-10 flex -translate-y-1/2 items-center justify-between px-2 sm:px-0">
         <button
           type="button"
           onClick={handlePrev}

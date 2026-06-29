@@ -13,8 +13,8 @@ const links = [
 ];
 
 const linkMotion = {
-  whileHover: { y: -1, opacity: 1 },
-  transition: { duration: 0.2 },
+  whileHover: { y: -1, opacity: 1, scale: 1.01 },
+  transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
 };
 
 export function Navbar() {
@@ -22,12 +22,12 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4 md:px-8 lg:px-12">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-4 py-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
         <a href="#top" className="text-sm uppercase tracking-[0.35em] text-gold">
           Dream Space
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8" aria-label="Primary navigation">
           {links.map((item) => (
             <motion.a
               key={item.href}
@@ -42,7 +42,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <LuxuryButton href="#contact" variant="secondary" className="px-5 py-3 text-sm">
+          <LuxuryButton href="#contact" variant="secondary" className="px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm">
             Consult
           </LuxuryButton>
         </div>
@@ -65,7 +65,7 @@ export function Navbar() {
             exit={{ opacity: 0, y: -12 }}
             className="border-t border-white/10 bg-black/95 md:hidden"
           >
-            <div className="mx-auto flex max-w-[1280px] flex-col gap-4 px-6 py-6">
+            <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-4 px-4 py-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
               {links.map((item) => (
                 <a
                   key={item.href}

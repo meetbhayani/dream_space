@@ -4,6 +4,13 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+const defaultVars = {
+  opacity: 0,
+  y: 48,
+  duration: 1,
+  ease: 'power3.out',
+};
+
 interface RevealOnScrollProps {
   children: React.ReactNode;
   className?: string;
@@ -21,10 +28,7 @@ export function RevealOnScroll({ children, className = '' }: RevealOnScrollProps
 
     const ctx = gsap.context(() => {
       gsap.from(element, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: 'power3.out',
+        ...defaultVars,
         scrollTrigger: {
           trigger: element,
           start: 'top 90%',
