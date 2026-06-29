@@ -2,6 +2,7 @@ import { ProjectCard } from '@/components/cards/ProjectCard';
 import { RevealOnScroll } from '@/components/animations/RevealOnScroll';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/sections/SectionHeading';
+import { Grid } from '@/components/ui/Grid';
 import { Carousel } from '@/components/ui/Carousel';
 
 const projects = [
@@ -34,8 +35,8 @@ const projects = [
 export function ProjectsSection() {
   return (
     <Section id="projects" className="mt-32">
-      <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#090909]/90 p-8 before:absolute before:-left-20 before:top-1/2 before:h-[300px] before:w-[300px] before:-translate-y-1/2 before:rounded-full before:bg-gold/10 before:blur-3xl">
-        <div className="relative space-y-10">
+      <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#090909]/90 p-6 sm:p-8 lg:p-10 before:absolute before:-left-20 before:top-1/2 before:h-[300px] before:w-[300px] before:-translate-y-1/2 before:rounded-full before:bg-gold/10 before:blur-3xl">
+        <Grid cols={1} className="relative gap-10 lg:gap-14 lg:grid-cols-[1.05fr_0.95fr] xl:grid-cols-[1.1fr_0.9fr]">
           <RevealOnScroll>
             <div className="max-w-3xl">
               <SectionHeading
@@ -43,6 +44,7 @@ export function ProjectsSection() {
                 title="Signature interiors that feel quietly luxurious."
                 description="Each project is composed with restrained materials, sculptural lighting, and clean proportions to create spaces that balance warmth and refinement."
               />
+              <div className="mt-8 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
             </div>
           </RevealOnScroll>
 
@@ -63,7 +65,7 @@ export function ProjectsSection() {
               </RevealOnScroll>
             ))}
           </div>
-        </div>
+        </Grid>
       </div>
     </Section>
   );

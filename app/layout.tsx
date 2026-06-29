@@ -5,6 +5,9 @@ import { ScrollProgress } from '@/components/navigation/ScrollProgress';
 import { Cursor } from '@/components/navigation/Cursor';
 import { DEFAULT_METADATA } from '@/constants/metadata';
 import { OrganizationStructuredData, LocalBusinessStructuredData } from '@/lib/seo/structured-data';
+import { PageTransition } from '@/components/ui/PageTransition';
+import { LoadingScreen } from '@/components/ui/LoadingScreen';
+import { CursorGlow } from '@/components/ui/CursorGlow';
 
 export const metadata: Metadata = {
   title: DEFAULT_METADATA.title,
@@ -30,10 +33,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <OrganizationStructuredData />
         <LocalBusinessStructuredData />
+        <LoadingScreen />
+        <CursorGlow />
         <LenisProvider>
           <ScrollProgress />
           <Cursor />
-          {children}
+          <PageTransition>{children}</PageTransition>
         </LenisProvider>
       </body>
     </html>

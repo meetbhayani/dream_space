@@ -16,6 +16,7 @@ export function TestimonialsSection() {
                 title="A quiet confidence in every collaboration."
                 description="Clients value our ability to simplify complexity, remain attentive to every detail, and deliver spaces that feel effortless and elevated."
               />
+              <div className="mt-8 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
             </div>
           </RevealOnScroll>
 
